@@ -14,6 +14,9 @@ using System.Xml.Linq;
 using System.Reflection.PortableExecutable;
 using System.Collections.ObjectModel;
 using DynamicData;
+using Avalonia.Controls;
+using System.Reactive;
+using MessageBox.Avalonia.DTO;
 
 namespace AvaloniaApplicationDemo.ViewModels
 {
@@ -27,6 +30,14 @@ namespace AvaloniaApplicationDemo.ViewModels
             get => _text;
             set => this.RaiseAndSetIfChanged(ref _text, value);
         }
+        //搜索关键字
+        private string searchName = "";
+        public string SearchName { get => searchName; set => this.RaiseAndSetIfChanged(ref searchName,value); }
+
+        //搜索 ，声明-注册-实现
+        //按钮声明
+        public ReactiveCommand<Button, Unit> btnSearch { get; }
+
         DataTable userinfo = null;
         public DataTable Userinfo
         {
@@ -35,7 +46,9 @@ namespace AvaloniaApplicationDemo.ViewModels
         }
         public ObservableCollection<TstuDbo> MyList { get; } = new ObservableCollection<TstuDbo>() { };
         public TestWindow1ViewModel()
-        {         
+        {
+            //按钮注册
+            btnSearch = ReactiveCommand.Create<Button>(btn);
             string sql = "select * from names";
             var ds = DBHelper.CX(sql);
             TstuDbo tstuDbo = new TstuDbo();
@@ -45,15 +58,60 @@ namespace AvaloniaApplicationDemo.ViewModels
             {
                 if (table.Rows.Count > 0)
                 {
-                    var tsdbo = new TstuDbo
+                    for (int i = 0; i < table.Rows.Count; i++)
                     {
-                        id = table.Rows[0].Field<int>("id"),
-                        mingzi = table.Rows[0].Field<string>("mingzi")
-                    };
-                    MyList.Add(tsdbo);
-                    //list.Add(tsdbo);
+                        var tsdbo = new TstuDbo
+                        {
+                            id = table.Rows[i].Field<int>("id"),
+                            mingzi = table.Rows[i].Field<string>("mingzi")
+                        };
+                        MyList.Add(tsdbo);
+                        //list.Add(tsdbo);
+                    }
                 }
             }
-        }   
+        }
+        //按钮的实现
+        public void btn(Button button)
+        {
+            //模糊查询
+            string sql = "select * from names where mingzi like '%{0}%'";
+            sql = String.Format(sql, SearchName);
+            DataSet ds = DBHelper.CX(sql);
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                var mes = MessageBox.Avalonia.MessageBoxManager
+                     .GetMessageBoxStandardWindow(new MessageBoxStandardParams
+                     {
+                         ContentTitle = "提醒",
+                         ContentHeader = "未查询到包含" +SearchName+ "的任何信息！Not found "
+                     });
+                mes.Show();
+            }
+            else
+            {
+                var tablesSeach = ds.Tables;
+                foreach (DataTable table in tablesSeach)
+                {
+                    if (table.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < table.Rows.Count; i++)
+                        {
+                            var tsdbo = new TstuDbo
+                            {
+                                id = table.Rows[i].Field<int>("id"),
+                                mingzi = table.Rows[i].Field<string>("mingzi")
+                            };
+                            MyList.Add(tsdbo);
+                            //list.Add(tsdbo);
+                        }
+                    }
+                }
+
+
+            }
+
+            }
+
     }
 }

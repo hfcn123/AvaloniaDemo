@@ -19,6 +19,8 @@ using System.Configuration;
 using AvaloniaApplicationDemo.Views;
 using MessageBox.Avalonia.ViewModels.Commands;
 using System.Windows.Input;
+using AvaloniaApplicationDemo.Models;
+using DynamicData;
 
 namespace AvaloniaApplicationDemo.ViewModels
 {
@@ -61,7 +63,8 @@ namespace AvaloniaApplicationDemo.ViewModels
             set => this.RaiseAndSetIfChanged(ref uTxtpwd, value);
         }
         // 下拉框数据  构造了一个集合
-        public ObservableCollection<jihe> MyList { get; } = new ObservableCollection<jihe>(){ };
+        //public ObservableCollection<jihe> MyList { get; } = new ObservableCollection<jihe>(){ };
+        public ObservableCollection<TstuDbo> MyList { get; } = new ObservableCollection<TstuDbo>() { };
         //构造方法（无参）
         public MainWindowViewModel()
         {
@@ -69,14 +72,33 @@ namespace AvaloniaApplicationDemo.ViewModels
             DataSet ds = DBHelper.CX(sql);
             btncom = ReactiveCommand.Create<Button>(btn);
             var c = new jihe();
-            //获取数据源
-            List<string> name = new List<string>(){ ds.Tables[0].Rows[0].Field<string>("mingzi").ToString() };
-            foreach (var a in name)
+            ////获取数据源
+            //List<string> name = new List<string>(){ ds.Tables[0].Rows[0].Field<string>("mingzi").ToString() };
+            //foreach (var a in name)
+            //{
+            //    c = new jihe();
+            //    c.name = a;
+            //    MyList.Add(c);
+            //}
+
+            var tables = ds.Tables;
+            foreach (DataTable table in tables)
             {
-                c = new jihe();
-                c.name = a;
-                MyList.Add(c);
+                if (table.Rows.Count > 0)
+                {
+                    for (int i = 0; i < table.Rows.Count; i++)
+                    {
+                        var tsdbo = new TstuDbo
+                        {
+                            mingzi = table.Rows[i].Field<string>("mingzi")
+                        };
+                        MyList.Add(tsdbo);
+                        //list.Add(tsdbo);
+                    }
+                }
             }
+
+
             // 
             Dbo = ds.Tables[0];
         }

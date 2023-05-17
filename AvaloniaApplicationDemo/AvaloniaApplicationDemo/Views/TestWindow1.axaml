@@ -7,14 +7,26 @@
         x:Class="AvaloniaApplicationDemo.Views.TestWindow1"
 		Title="TestWindow1"
 		>
-	<Grid>
-		<Label Content="fsdf"></Label>
-		<DataGrid Name="MyDataGrid" Items="{Binding MyList}" AutoGenerateColumns="False"  >
-			<DataGrid.Columns >
-				<DataGridTextColumn Header="id"  Binding="{Binding id}" Foreground="Black"/>
-				<DataGridTextColumn Header="name" Binding="{Binding mingzi}" />
-			</DataGrid.Columns>
-		</DataGrid>
+
+
+	<Grid RowDefinitions="30, 4, auto">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Rectangle Grid.Row="0"  />
+		<TextBox  Text="{Binding SearchName}"   Watermark="请输入用户名"  Width="150"  Height="20" VerticalAlignment="Bottom"  HorizontalAlignment="Right" Margin="0 0 0 5"/>
+		<Button Grid.Row="0" Grid.Column="1"  Margin="20 0 0 0" VerticalAlignment="Bottom" Background="GreenYellow"  Command="{Binding btnSearch}">Search </Button>
+		<GridSplitter Grid.Row="1" Background="Black" ResizeDirection="Rows" Grid.ColumnSpan="2"/>
+		<Rectangle Grid.Row="2" />
+
+			<DataGrid Name="MyDataGrid" Items="{Binding MyList}" AutoGenerateColumns="False"  Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black">
+				<DataGrid.Columns >
+					<DataGridTextColumn Header="id"  Binding="{Binding id}" Foreground="Black"/>
+					<DataGridTextColumn Header="name" Binding="{Binding mingzi}" />
+				</DataGrid.Columns>
+			</DataGrid>
+	
 	</Grid>
- 
+	
 </Window>

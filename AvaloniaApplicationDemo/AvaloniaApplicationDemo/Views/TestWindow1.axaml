@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:AvaloniaApplicationDemo.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplicationDemo.Views.TestWindow1"
+		Title="TestWindow1"
+		>
+	<Grid>
+		<Label Content="fsdf"></Label>
+		<DataGrid Name="MyDataGrid" Items="{Binding MyList}" AutoGenerateColumns="False"  >
+			<DataGrid.Columns >
+				<DataGridTextColumn Header="id"  Binding="{Binding id}" Foreground="Black"/>
+				<DataGridTextColumn Header="name" Binding="{Binding mingzi}" />
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+ 
+</Window>

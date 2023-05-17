@@ -1,0 +1,13 @@
+is_global = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.RootNamespace = AvaloniaApplicationDemo
+build_property.ProjectDir = C:\Users\86153\source\repos\AvaloniaApplicationDemo\AvaloniaApplicationDemo\
+
+[C:/Users/86153/source/repos/AvaloniaApplicationDemo/AvaloniaApplicationDemo/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/86153/source/repos/AvaloniaApplicationDemo/AvaloniaApplicationDemo/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

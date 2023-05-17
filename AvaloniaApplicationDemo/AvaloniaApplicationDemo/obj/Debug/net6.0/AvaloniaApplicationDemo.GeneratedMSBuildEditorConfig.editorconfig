@@ -1,0 +1,24 @@
+is_global = true
+build_property.AvaloniaNameGeneratorBehavior = InitializeComponent
+build_property.AvaloniaNameGeneratorDefaultFieldModifier = internal
+build_property.AvaloniaNameGeneratorFilterByPath = *
+build_property.AvaloniaNameGeneratorFilterByNamespace = *
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AvaloniaApplicationDemo
+build_property.ProjectDir = C:\Users\86153\source\repos\AvaloniaApplicationDemo\AvaloniaApplicationDemo\
+
+[C:/Users/86153/source/repos/AvaloniaApplicationDemo/AvaloniaApplicationDemo/App.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/86153/source/repos/AvaloniaApplicationDemo/AvaloniaApplicationDemo/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/86153/source/repos/AvaloniaApplicationDemo/AvaloniaApplicationDemo/Views/TestWindow1.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

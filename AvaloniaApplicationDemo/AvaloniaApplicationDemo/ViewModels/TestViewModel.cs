@@ -24,6 +24,5 @@ namespace AvaloniaApplicationDemo.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text)));
             }
         }
-        //git加注
     }
 }

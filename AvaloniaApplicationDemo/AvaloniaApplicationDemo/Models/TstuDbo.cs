@@ -12,9 +12,15 @@ namespace AvaloniaApplicationDemo.Models
 
         public int id { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        
         public string mingzi { get; set; }
+
+
+        public string sex { get; set; }
+        public int age { get; set; }
+        public string Number { get; set; }
+        public string adress { get; set; }
+
 
         //[Required]
         //[StringLength(20)]

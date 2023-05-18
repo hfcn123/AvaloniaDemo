@@ -15,7 +15,7 @@
 			<ColumnDefinition Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Rectangle Grid.Row="0"  />
-		<TextBox  Text="{Binding SearchName}"   Watermark="ÇëÊäÈëÓÃ»§Ãû"  Width="150"  Height="20" VerticalAlignment="Bottom"  HorizontalAlignment="Right" Margin="0 0 0 5"/>
+		<TextBox  Text="{Binding SearchName}"   Watermark="è¯·è¾“å…¥ç”¨æˆ·å"  Width="150"  Height="20" VerticalAlignment="Bottom"  HorizontalAlignment="Right" Margin="0 0 0 5"/>
 		<Button Grid.Row="0" Grid.Column="1"  Margin="20 0 0 0" VerticalAlignment="Bottom" Background="GreenYellow"  Command="{Binding btnSearch}">Search </Button>
 		<GridSplitter Grid.Row="1" Background="Black" ResizeDirection="Rows" Grid.ColumnSpan="2"/>
 		<Rectangle Grid.Row="2" />
@@ -23,7 +23,12 @@
 			<DataGrid Name="MyDataGrid" Items="{Binding MyList}" AutoGenerateColumns="False"  Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black">
 				<DataGrid.Columns >
 					<DataGridTextColumn Header="id"  Binding="{Binding id}" Foreground="Black"/>
-					<DataGridTextColumn Header="name" Binding="{Binding mingzi}" />
+					<DataGridTextColumn Header="å§“å" Binding="{Binding mingzi}" />
+					<DataGridTextColumn Header="æ€§åˆ«" Binding="{Binding sex}" />
+					<DataGridTextColumn Header="å¹´é¾„" Binding="{Binding age}" />
+					<DataGridTextColumn Header="è”ç³»æ–¹å¼" Binding="{Binding Number}" />
+					<DataGridTextColumn Header="åœ°å€" Binding="{Binding adress}" />
+		
 				</DataGrid.Columns>
 			</DataGrid>
 	

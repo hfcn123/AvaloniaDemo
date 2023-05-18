@@ -63,7 +63,12 @@ namespace AvaloniaApplicationDemo.ViewModels
                         var tsdbo = new TstuDbo
                         {
                             id = table.Rows[i].Field<int>("id"),
-                            mingzi = table.Rows[i].Field<string>("mingzi")
+                            mingzi = table.Rows[i].Field<string>("mingzi"),
+                            age=(int) table.Rows[i].Field<int>("age"),
+                            sex= table.Rows[i].Field<string>("sex"),
+                            Number= table.Rows[i].Field<string>("Number"),
+                            adress= table.Rows[i].Field<string>("adress")
+
                         };
                         MyList.Add(tsdbo);
                         //list.Add(tsdbo);
@@ -90,6 +95,7 @@ namespace AvaloniaApplicationDemo.ViewModels
             }
             else
             {
+                MyList.Clear();
                 var tablesSeach = ds.Tables;
                 foreach (DataTable table in tablesSeach)
                 {
@@ -100,18 +106,18 @@ namespace AvaloniaApplicationDemo.ViewModels
                             var tsdbo = new TstuDbo
                             {
                                 id = table.Rows[i].Field<int>("id"),
-                                mingzi = table.Rows[i].Field<string>("mingzi")
+                                mingzi = table.Rows[i].Field<string>("mingzi"),
+                                age = (int)table.Rows[i].Field<int>("age"),
+                                sex = table.Rows[i].Field<string>("sex"),
+                                Number = table.Rows[i].Field<string>("Number"),
+                                adress = table.Rows[i].Field<string>("adress")
                             };
                             MyList.Add(tsdbo);
                             //list.Add(tsdbo);
                         }
                     }
                 }
-
-
             }
-
-            }
-
+           }
     }
 }
